@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-04-24 18:31:36
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:03:21
+ * @LastEditTime: 2023-04-24 22:09:06
  * @description: vite.config
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -18,10 +18,10 @@ import visualizer from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
   const env: Record<string, string> = loadEnv(mode, process.cwd(), '') // 环境变量
-  const isProd: boolean = env.VITE_APP_ENV === 'production'
   const isDev: boolean = env.VITE_APP_ENV === 'development'
   const isSit: boolean = env.VITE_APP_ENV === 'sit'
   const isUat: boolean = env.VITE_APP_ENV === 'uat'
+  const isProd: boolean = env.VITE_APP_ENV === 'production'
   const isHideLog: boolean = env.VITE_APP_LOG === 'true'
   const isTiny: boolean = env.VITE_APP_TINY === 'true'
 
@@ -58,36 +58,37 @@ export default defineConfig(({ mode, command }) => {
   let outputDir: string = ''
 
   // 测试使用dist打包
-  if (isSit) {
+  if (isSit || isProd || isUat) {
     publicPath = env.VITE_APP_RESOURCE_URL as string
     outputDir = 'dist'
   }
+
   // 生产/预生产使用时间戳
-  if (isProd || isUat) {
-    // 前端打包解决缓存问题
-    const formatDate = (): string => {
-      const time: Date = new Date()
-      let y: string = time.getFullYear().toString()
-      let m: string = (time.getMonth() + 1).toString()
-      let d: string = time.getDate().toString()
-      let h: string = time.getHours().toString()
-      let mm: string = time.getMinutes().toString()
-      let ss: string = time.getSeconds().toString()
-      m = Number(m) < 10 ? `0${m}` : m
-      d = Number(d) < 10 ? `0${d}` : d
-      h = Number(h) < 10 ? `0${h}` : h
-      mm = Number(mm) < 10 ? `0${mm}` : mm
-      return `${y}${m}${d}${h}${mm}${ss}`
-    }
-    const dirName: string = formatDate()
-    publicPath = `${env.VITE_APP_RESOURCE_URL}${dirName}`
-    if (isProd || isUat) {
-      outputDir = `./mobile/${dirName}`
-    }
-    if (isSit) {
-      outputDir = dirName
-    }
-  }
+  // if (isProd || isUat) {
+  //   // 前端打包解决缓存问题
+  //   const formatDate = (): string => {
+  //     const time: Date = new Date()
+  //     let y: string = time.getFullYear().toString()
+  //     let m: string = (time.getMonth() + 1).toString()
+  //     let d: string = time.getDate().toString()
+  //     let h: string = time.getHours().toString()
+  //     let mm: string = time.getMinutes().toString()
+  //     let ss: string = time.getSeconds().toString()
+  //     m = Number(m) < 10 ? `0${m}` : m
+  //     d = Number(d) < 10 ? `0${d}` : d
+  //     h = Number(h) < 10 ? `0${h}` : h
+  //     mm = Number(mm) < 10 ? `0${mm}` : mm
+  //     return `${y}${m}${d}${h}${mm}${ss}`
+  //   }
+  //   const dirName: string = formatDate()
+  //   publicPath = `${env.VITE_APP_RESOURCE_URL}${dirName}`
+  //   if (isProd || isUat) {
+  //     outputDir = `./admin/${dirName}`
+  //   }
+  //   if (isSit) {
+  //     outputDir = dirName
+  //   }
+  // }
 
   return {
     // root: process.cwd(), // 项目根目录（index.html 文件所在的位置） 默认process.cwd()
