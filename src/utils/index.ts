@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-03-21 16:52:49
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-27 15:02:33
+ * @LastEditTime: 2023-04-27 17:23:37
  * @description: 工具方法
  */
 
@@ -120,7 +120,7 @@ export const randomString = (e: number = 32): string => {
  * @description 生成随机数
  * @param {number} min 最小值
  * @param {number} max 最大值
- * @return {number}
+ * @return number
  */
 export function randomNum(min: number, max: number): number {
   let num = Math.floor(Math.random() * (min - max) + max)
@@ -175,7 +175,7 @@ export const getEnumKey = <R extends string, T extends { [key: string]: R }>(enu
  * 复制方法
  * @param {string} text 要复制的内容
  * @param {boolean} origin 通过什么类型复制 input:false复制内容在一行 textarea:true可换行 可选，默认textarea
- * @returns {Promise<boolean>} 是否复制成功
+ * @returns Promise<boolean> 是否复制成功
  */
 export const $copy = (text: string, origin: boolean = true): Promise<boolean> => {
   return new Promise((resolve, reject) => {
@@ -246,7 +246,7 @@ export const scrollPageTo = (scroll: number, duration: number = 250, offset: num
 
 /**
  * @description 生成唯一 uuid
- * @return {string}
+ * @return string
  */
 export function generateUUID(): string {
   if (typeof crypto === "object") {
@@ -278,7 +278,7 @@ export function generateUUID(): string {
 
 /**
  * @description 获取当前时间对应的提示语
- * @return {string}
+ * @return string
  */
 export function getTimeState(): string {
   // 获取当前时间
