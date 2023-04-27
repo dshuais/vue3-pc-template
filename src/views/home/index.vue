@@ -2,13 +2,15 @@
  * @Author: dushuai
  * @Date: 2023-04-24 21:20:50
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:55:54
- * @description: 心平气和
+ * @LastEditTime: 2023-04-27 15:05:39
+ * @description: index
 -->
 <script setup lang='ts'>
 
+onMounted(() => {
+})
 </script>
 <template>
   index1
 </template>
-<style lang='less' scoped></style>
+<style lang='scss' scoped></style>

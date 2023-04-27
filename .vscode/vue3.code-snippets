@@ -24,7 +24,7 @@
 			"<template>",
 			"  $TM_FILENAME_BASE",
 			"</template>",
-			"<style lang='less' scoped>",
+			"<style lang='scss' scoped>",
 			"</style>",
 			""
 		],

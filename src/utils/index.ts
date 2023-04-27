@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-03-21 16:52:49
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:39:50
+ * @LastEditTime: 2023-04-27 15:02:33
  * @description: 工具方法
  */
 
@@ -114,6 +114,17 @@ export const randomString = (e: number = 32): string => {
     n: string = ''
   for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a))
   return n
+}
+
+/**
+ * @description 生成随机数
+ * @param {number} min 最小值
+ * @param {number} max 最大值
+ * @return {number}
+ */
+export function randomNum(min: number, max: number): number {
+  let num = Math.floor(Math.random() * (min - max) + max)
+  return num
 }
 
 /**
@@ -231,4 +242,54 @@ export const scrollPageTo = (scroll: number, duration: number = 250, offset: num
     }
   }
   requestAnimationFrame(step)
+}
+
+/**
+ * @description 生成唯一 uuid
+ * @return {string}
+ */
+export function generateUUID(): string {
+  if (typeof crypto === "object") {
+    if (typeof crypto.randomUUID === "function") {
+      return crypto.randomUUID()
+    }
+    if (typeof crypto.getRandomValues === "function" && typeof Uint8Array === "function") {
+      const callback = (c: any) => {
+        const num = Number(c)
+        return (num ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (num / 4)))).toString(16)
+      }
+      return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, callback)
+    }
+  }
+  let timestamp: number = new Date().getTime()
+  let performanceNow: number = (typeof performance !== "undefined" && performance.now && performance.now() * 1000) || 0
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
+    let random = Math.random() * 16
+    if (timestamp > 0) {
+      random = (timestamp + random) % 16 | 0
+      timestamp = Math.floor(timestamp / 16)
+    } else {
+      random = (performanceNow + random) % 16 | 0;
+      performanceNow = Math.floor(performanceNow / 16)
+    }
+    return (c === "x" ? random : (random & 0x3) | 0x8).toString(16)
+  })
+}
+
+/**
+ * @description 获取当前时间对应的提示语
+ * @return {string}
+ */
+export function getTimeState(): string {
+  // 获取当前时间
+  let timeNow: Date = new Date()
+  // 获取当前小时
+  let hours: number = timeNow.getHours()
+  // 判断当前时间段
+  if (hours >= 6 && hours <= 10) return `早上好 ⛅`
+  if (hours >= 10 && hours <= 14) return `中午好 🌞`
+  if (hours >= 14 && hours <= 18) return `下午好 🌞`
+  if (hours >= 18 && hours <= 24) return `晚上好 🌛`
+  if (hours >= 0 && hours <= 6) return `凌晨好 🌛`
+  return '你好 ✨'
 }

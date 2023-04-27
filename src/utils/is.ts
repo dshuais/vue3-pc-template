@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-04-07 17:58:21
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-07 17:58:33
+ * @LastEditTime: 2023-04-27 12:21:02
  * @description: is类型推断
  */
 export function isNumber<T extends number>(value: T | unknown): value is number {
@@ -59,4 +59,15 @@ export function isMap<T extends Map<any, any>>(value: T | unknown): value is T {
 
 export function isFile<T extends File>(value: T | unknown): value is T {
   return Object.prototype.toString.call(value) === '[object File]'
+}
+
+/**
+ * @description 判断数据类型
+ * @param {any} val 需要判断类型的数据
+ * @return {string}
+ */
+export function isType(val: any): string {
+  if (val === null) return "null"
+  if (typeof val !== "object") return typeof val
+  else return Object.prototype.toString.call(val).slice(8, -1).toLocaleLowerCase()
 }
