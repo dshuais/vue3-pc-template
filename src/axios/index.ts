@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-03-14 17:53:45
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:34:17
+ * @LastEditTime: 2023-04-27 15:39:11
  * @description: axios
  */
 import axios, { AxiosError, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios'
@@ -12,7 +12,7 @@ import ErrorCodeHandle from './requestCode'
 
 
 /** 不需要处理异常白名单 */
-const whiteList: string[] = ['/qiniu/upload/uptoken']
+const whiteList: string[] = []
 
 // axios基础配置
 const service = axios.create({
