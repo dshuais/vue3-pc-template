@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-04-24 18:31:36
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:23:16
+ * @LastEditTime: 2023-04-27 10:32:35
  * @description: main
  */
 import { createApp } from 'vue'
@@ -11,7 +11,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createHead } from '@vueuse/head'
 import App from './App.vue'
 import router from './router'
-import './assets/style/reset.less'
+import './assets/style/reset.scss'
 
 createApp(App)
   .use(createPinia().use(piniaPluginPersistedstate))

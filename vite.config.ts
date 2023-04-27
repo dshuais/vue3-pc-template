@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-04-24 18:31:36
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-24 22:09:06
+ * @LastEditTime: 2023-04-27 10:32:29
  * @description: vite.config
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -222,12 +222,12 @@ export default defineConfig(({ mode, command }) => {
     // css
     css: {
       // css预处理器
-      preprocessorOptions: {
-        less: {
-          charset: false,
-          additionalData: '@import "./src/assets/style/global.less";'
-        }
-      }
+      // preprocessorOptions: {
+      //   less: {
+      //     charset: false,
+      //     additionalData: '@import "./src/assets/style/global.less";'
+      //   }
+      // }
     }
 
   }
