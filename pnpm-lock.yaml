@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   bin-wrapper: npm:bin-wrapper-china
 
@@ -7,6 +11,9 @@ dependencies:
   axios:
     specifier: ^1.3.6
     version: 1.3.6
+  danmaku-vue:
+    specifier: ^1.0.2
+    version: 1.0.2
   element-plus:
     specifier: ^2.3.4
     version: 2.3.4(vue@3.2.47)
@@ -1639,6 +1646,10 @@ packages:
       bin-build: 3.0.0
       bin-wrapper: /bin-wrapper-china@0.1.0
     dev: true
+
+  /danmaku-vue@1.0.2:
+    resolution: {integrity: sha512-fS6FBeM/HpABQViAjO0mdzkp5eyxhlgxzY49FhBk1kiGD9wAzvEpkt+egGFqEdpA0gEKGYwwcKXAUlcdcDtb9Q==}
+    dev: false
 
   /dayjs@1.11.7:
     resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}

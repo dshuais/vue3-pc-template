@@ -14,6 +14,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "ignoreDeprecations": "5.0",
     "suppressImplicitAnyIndexErrors": true, // 解决any|string...等不能用于索引的提示
   },
 
