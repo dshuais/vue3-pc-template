@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-11-01 12:05:03
  * @LastEditors: dushuai
- * @LastEditTime: 2023-11-01 15:05:21
+ * @LastEditTime: 2023-11-01 16:20:16
  * @description: jsx页面
  */
 import { to } from '@/utils/router'
@@ -24,6 +24,7 @@ export default defineComponent({
     return () => (
       <>
         <div class={styles.container}>jsx页面</div>
+        <div class='h-52 w-52 bg-emerald-300 dark:border-l-indigo-600 text-gray-950 dark:text-white'>盒子</div>
         <ElButton type={'primary'} onClick={handleJump}>回首页</ElButton>
       </>
     )
