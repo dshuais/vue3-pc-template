@@ -2,11 +2,10 @@
  * @Author: dushuai
  * @Date: 2023-04-24 18:31:36
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-27 17:22:27
+ * @LastEditTime: 2023-11-01 12:12:17
  * @description: router
  */
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-
 
 /**
  * @description 动态路由参数配置简介 📚
@@ -28,21 +27,26 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home',
     component: () => import('@/views/home/index.vue')
   },
-  // {
-  //   path: '/',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (About.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import('@/views/about/index.vue')
-  // }
+  {
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (About.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('@/views/about/index.vue')
+  },
+  {
+    path: '/jsx',
+    name: 'Jsx',
+    component: () => import('@/views/jsx')
+  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(), // import.meta.env.BASE_URL
   routes
 })
 

@@ -2,7 +2,7 @@
  * @Author: dushuai
  * @Date: 2023-04-24 18:31:36
  * @LastEditors: dushuai
- * @LastEditTime: 2023-04-27 16:35:48
+ * @LastEditTime: 2023-11-01 15:01:42
  * @description: vite.config
  */
 import { fileURLToPath, URL } from 'node:url'
@@ -14,6 +14,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
 import viteImagemin from 'vite-plugin-imagemin'
 import visualizer from 'rollup-plugin-visualizer'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import ElementPlus from 'unplugin-element-plus/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {
@@ -97,6 +99,10 @@ export default defineConfig(({ mode, command }) => {
     plugins: [
       vue(),
 
+      vueJsx(),
+
+      ElementPlus({}), // 解决jsx内import导入组件样式丢失问题
+
       // 插件自动按需引入
       AutoImport({
         dts: 'src/auto-imports.d.ts', // 会在根目录生成auto-imports.d.ts
@@ -108,7 +114,8 @@ export default defineConfig(({ mode, command }) => {
           // 输出一份json文件，默认输出路径为./.eslintrc-auto-import.json
           // filepath: './.eslintrc-auto-import.json', // @default './.eslintrc-auto-import.json'
           // globalsPropValue: true, // @default true 可设置 boolean | 'readonly' | 'readable' | 'writable' | 'writeable'
-        }
+        },
+        resolvers: [ElementPlusResolver()],
       }),
 
       // 组件自动按需引入
