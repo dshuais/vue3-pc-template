@@ -3,3 +3,56 @@
   height: 100px;
   background-color: red;
 }
+
+/* Global */
+body{
+  color: rgba(255,255,255,.75);
+  background-color: rgb(25,25,25);  
+}
+
+.typewriter {
+  // position: relative;
+  // top: 50%;
+  border-right: 2px solid rgba(255,255,255,.75);
+  font-size: 32px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  // transform: translateY(-50%);
+  position: absolute;
+}
+
+.line-1{
+    position: relative;
+    top: 50%;
+    width: 560px;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 600ms steps(44) infinite normal;
+}
+.anim-typewriter--close {
+  animation: typewriterClose 4s steps(44) 1s normal both,
+             blinkTextCursor 600ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 560px;}
+}
+@keyframes typewriterClose{
+  from{width: 560px;}
+  to{width: 0px;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
